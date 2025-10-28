@@ -6,8 +6,12 @@ const Hero = () => {
     document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollOneScreen = () => {
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" dir="rtl">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20" dir="rtl">
       {/* Animated gradient background */}
       <div 
         className="absolute inset-0 animate-gradient"
@@ -78,7 +82,10 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+        onClick={scrollOneScreen}
+      >
         <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center p-2">
           <div className="w-1 h-3 bg-foreground/30 rounded-full" />
         </div>
