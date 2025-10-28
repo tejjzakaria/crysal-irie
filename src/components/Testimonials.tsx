@@ -1,98 +1,95 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { useState } from "react";
+import { X } from "lucide-react";
 
-const testimonials = [
-  {
-    name: "Crystal Oil 💗👑",
-    text: "هاد زيت Crystal Oil راه خطير بزاف 😍",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/L4RcVSBxwSS2Oe4Jgp2nvTcCb5oDlM2KoSY8HJoz.jpg",
-  },
-  {
-    name: "وااااعر 🔥",
-    text: "كلهم فيهم لمسة واقعية + جاذبية 😍",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/iWQsTRIPwRjNWoqrGUxbZuH2mIPFflCK7ZJvNA7r.jpg",
-  },
-  {
-    name: "majda madouni",
-    text: "منين كنحط هاد الزيت، كولشي كيبدا يسول: \"شنو هاد الريحة الزوينة؟\" 😍 كنقول ليهم بكل ثقة: \"هاد سحر Crystal Oil، ماشي غير عطر!\" ✨🧴",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/3azbof3ZhkMf6bB0XusJ9Yg7kKIMTZsBvW4yRjmX.jpg",
-  },
-  {
-    name: "imane aalillat",
-    text: "عمري ما جربت شي حاجة كتخلي الناس يسولوني على الريحة بحال Crystal Oil 👃🔥 ماشي غير زيت… هادي تجربة 💎",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/AUAzJp5T12cLZdgl5j6ZKITz2uPrZ824Uk33MRAu.jpg",
-  },
-  {
-    name: "مريم",
-    text: "منين كندير زيت Crystal Oil، كنحس بحالي مبدّلة 😏 الثقة كتطلع، والناس كيتقربو بلا ما تسولهم! ريحة كتبقى فالبال… كتبدا القصص بلا كلام 😮‍💨💋",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/h6hrKMoLJ6CG4mPhMnR7iXRPAIoN51zB0HYCMrls.jpg",
-  },
-  {
-    name: "سلمى ✨",
-    text: "كنت كنشك فأول، لكن من بعد ما جربت Crystal Oil، بديت كنعرف شنو يعني زيت فاخر! بشرتي ولات ناعمة وريحة رائعة كتدوم طول النهار 💕",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/L4RcVSBxwSS2Oe4Jgp2nvTcCb5oDlM2KoSY8HJoz.jpg",
-  },
-  {
-    name: "هدى 🌸",
-    text: "جربت بزاف ديال المنتجات ولكن Crystal Oil كانت فعلا مختلفة! جودة عالية وثمن معقول. دابا ولات ديالي كل يوم 💯",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/iWQsTRIPwRjNWoqrGUxbZuH2mIPFflCK7ZJvNA7r.jpg",
-  },
-  {
-    name: "نادية 👑",
-    text: "والله حتى صحابي لاحظو الفرق! كيسولوني دائماً شنو كنستعمل. Crystal Oil هي السر ديالي 🤫 التوصيل كان سريع والمنتج أصلي 100% 🎁",
-    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/3azbof3ZhkMf6bB0XusJ9Yg7kKIMTZsBvW4yRjmX.jpg",
-  },
+const reviewImages = [
+  "/reviews/IMG_2509.jpg",
+  "/reviews/IMG_4461.jpg",
+  "/reviews/IMG_4462.jpg",
+  "/reviews/IMG_4501.jpg",
+  "/reviews/IMG_4512.jpg",
+  "/reviews/IMG_4521.jpg",
+  "/reviews/IMG_4528.jpg",
+  "/reviews/IMG_4582.jpg",
+  "/reviews/IMG_4591.jpg",
+  "/reviews/IMG_4594.jpg",
+  "/reviews/IMG_4624 2.jpg",
+  "/reviews/IMG_4628.jpg",
+  "/reviews/IMG_4630 2.jpg",
+  "/reviews/IMG_4656 2.jpg",
+  "/reviews/IMG_4657 2.jpg",
+  "/reviews/IMG_4662.jpg",
+  "/reviews/IMG_4693.jpg",
+  "/reviews/IMG_4716.jpg",
+  "/reviews/IMG_4739.jpg",
+  "/reviews/IMG_4747.jpg",
+  "/reviews/IMG_4826.jpg",
+  "/reviews/IMG_4891 2.jpg",
+  "/reviews/IMG_4902.jpg",
+  "/reviews/IMG_4972.jpg",
+  "/reviews/IMG_5010.jpg",
+  "/reviews/IMG_5029.jpg",
+  "/reviews/IMG_5031.jpg",
+  "/reviews/IMG_5105.jpg",
+  "/reviews/IMG_5121.jpg",
+  "/reviews/IMG_5158.jpg",
+  "/reviews/IMG_5162.jpg",
 ];
 
 const Testimonials = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
-    <section id="testimonials" className="py-20 px-4" dir="rtl">
+    <section id="testimonials" className="py-20 px-4 bg-muted/30" dir="rtl">
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            آراء زبناءنا
+            آراء زبناءنا 💬
           </h2>
           <p className="text-xl text-muted-foreground">
             تجارب حقيقية من عملائنا المميزين
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {reviewImages.map((image, index) => (
+            <div
               key={index}
-              className="hover-lift border-0 shadow-lg"
-              style={{
-                animationDelay: `${index * 0.1}s`,
-              }}
+              className="relative aspect-square overflow-hidden rounded-lg shadow-lg hover-lift cursor-pointer group"
+              onClick={() => setSelectedImage(image)}
             >
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover ring-2 ring-primary/20"
-                  />
-                  <div className="flex-1">
-                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                    <div className="flex gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {testimonial.text}
-                </p>
-              </CardContent>
-            </Card>
+              <img
+                src={image}
+                alt={`تقييم العميل ${index + 1}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">اضغط للتكبير</span>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white hover:text-primary transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img
+            src={selectedImage}
+            alt="Review"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 };
