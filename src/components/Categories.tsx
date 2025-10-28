@@ -5,18 +5,21 @@ const categories = [
   {
     title: "صابون الكريستال",
     description: "صابون فاخر مع كريستال طبيعي",
+    details: "صابون مصنوع بعناية فائقة مع كريستالات طبيعية لتنظيف عميق ولطيف للبشرة",
     icon: Sparkles,
     image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/categories/szIhOAV42hv1q761nHoXOgU6NcM0WwoZdqhJBu26_md.jpg",
   },
   {
     title: "زيوت طبيعية",
     description: "زيوت فرمونية وعطرية طبيعية",
+    details: "مجموعة فريدة من الزيوت الطبيعية مع روائح فواحة تدوم طوال اليوم",
     icon: Droplet,
     image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/categories/UiLgL54i2ZMj7JF1szKhmYtgWYtoFzKw8PJ2ThbE_md.jpg",
   },
   {
     title: "كتل الصابون",
     description: "قطع صابون طبيعية بأحجام مختلفة",
+    details: "صابون طبيعي خالي من المواد الكيميائية، مناسب لجميع أنواع البشرة",
     icon: Package,
     image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/categories/2WY7GFfUsqmb0ScLOJ7Pb8raWfWxwpX1pHxCcDcq_md.jpg",
   },
@@ -67,6 +70,11 @@ const Categories = () => {
                     </p>
                   </div>
                 </div>
+                <CardContent className="p-6">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {category.details}
+                  </p>
+                </CardContent>
               </Card>
             );
           })}

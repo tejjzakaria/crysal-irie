@@ -27,6 +27,21 @@ const testimonials = [
     text: "منين كندير زيت Crystalirie، كنحس بحالي مبدّلة 😏 الثقة كتطلع، والناس كيتقربو بلا ما تسولهم! ريحة كتبقى فالبال… كتبدا القصص بلا كلام 😮‍💨💋",
     image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/h6hrKMoLJ6CG4mPhMnR7iXRPAIoN51zB0HYCMrls.jpg",
   },
+  {
+    name: "سلمى ✨",
+    text: "كنت كنشك فأول، لكن من بعد ما جربت Crystalirie، بديت كنعرف شنو يعني زيت فاخر! بشرتي ولات ناعمة وريحة رائعة كتدوم طول النهار 💕",
+    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/L4RcVSBxwSS2Oe4Jgp2nvTcCb5oDlM2KoSY8HJoz.jpg",
+  },
+  {
+    name: "هدى 🌸",
+    text: "جربت بزاف ديال المنتجات ولكن Crystalirie كانت فعلا مختلفة! جودة عالية وثمن معقول. دابا ولات ديالي كل يوم 💯",
+    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/iWQsTRIPwRjNWoqrGUxbZuH2mIPFflCK7ZJvNA7r.jpg",
+  },
+  {
+    name: "نادية 👑",
+    text: "والله حتى صحابي لاحظو الفرق! كيسولوني دائماً شنو كنستعمل. Crystalirie هي السر ديالي 🤫 التوصيل كان سريع والمنتج أصلي 100% 🎁",
+    image: "https://cdn.youcan.shop/stores/64475bdccb2dbd1214f1654dd9d89f00/others/3azbof3ZhkMf6bB0XusJ9Yg7kKIMTZsBvW4yRjmX.jpg",
+  },
 ];
 
 const Testimonials = () => {
