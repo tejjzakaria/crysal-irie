@@ -194,7 +194,9 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                <span>+212 XXX-XXXXXX</span>
+                <span>
+                  0632454694
+                </span>
               </div>
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
@@ -207,21 +209,23 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="text-center md:text-left">
+          <div className="text-center">
             <h4 className="font-bold text-lg mb-4">تابعينا</h4>
-            <div className="flex gap-3 justify-center md:justify-start">
+            <div className="flex gap-3 justify-center">
+              <a href="https://www.instagram.com/crystaloil.ma/" target="_blank">
               <Button size="icon" variant="outline" className="rounded-full">
                 <Instagram className="w-5 h-5" />
-              </Button>
+              </Button></a>
+              <a href="https://web.facebook.com/crystaloil.MA" target="_blank">
               <Button size="icon" variant="outline" className="rounded-full">
                 <Facebook className="w-5 h-5" />
-              </Button>
+              </Button></a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-border pt-8 text-center text-muted-foreground">
-          <p>© 2024 Crystalirie. جميع الحقوق محفوظة.</p>
+          <p>© 2025 Crystalirie. جميع الحقوق محفوظة.</p>
         </div>
       </div>
     </footer>
