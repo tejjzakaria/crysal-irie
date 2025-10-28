@@ -181,11 +181,15 @@ const Footer = () => {
         {/* Footer Info */}
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div className="text-center md:text-right">
-            <h3 className="text-2xl font-bold mb-4">
-              CRYSTAL<span className="text-primary">+</span>IRIE
-            </h3>
+            <div className="flex justify-center md:justify-start mb-4">
+              <img
+                src="/CRYSTAL OIL LOGO.png"
+                alt="Crystal Oil Logo"
+                className="h-6 w-auto"
+              />
+            </div>
             <p className="text-muted-foreground leading-relaxed">
-              كريستال آيري هي علامة متخصصة في العناية الذاتية الطبيعية، تقدم صابونًا وزيوتًا فاخرة مصنوعة يدويًا من مكونات نباتية نقية. تم تصميم كل منتج ليغذي البشرة ويحوّل روتينك اليومي إلى لحظة من الهدوء والدلال. بلمسات أنيقة وروائح لطيفة وملمس غني، تجمع كريستال آيري بين الطبيعة والفخامة لتمنحك تجربة عناية حسية وأصيلة.
+              كريستال أويل هي علامة متخصصة في العناية الذاتية الطبيعية، تقدم صابونًا وزيوتًا فاخرة مصنوعة يدويًا من مكونات نباتية نقية. تم تصميم كل منتج ليغذي البشرة ويحوّل روتينك اليومي إلى لحظة من الهدوء والدلال. بلمسات أنيقة وروائح لطيفة وملمس غني، تجمع كريستال أويل بين الطبيعة والفخامة لتمنحك تجربة عناية حسية وأصيلة.
             </p>
           </div>
 
@@ -200,7 +204,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>info@crystalirie.ma</span>
+                <span>info@crystaloil.ma</span>
               </div>
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
@@ -225,7 +229,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border pt-8 text-center text-muted-foreground">
-          <p>© 2025 Crystalirie. جميع الحقوق محفوظة.</p>
+          <p>© 2025 Crystal Oil. جميع الحقوق محفوظة.</p>
         </div>
       </div>
     </footer>

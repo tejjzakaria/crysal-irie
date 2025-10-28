@@ -54,7 +54,7 @@ export const products: Product[] = [
     oldPrice: "690 د.م",
     discount: "42%",
     description: "4 زجاجات بأحجام مختلفة",
-    longDescription: "مجموعة كاملة من زيوت Crystalirie الفاخرة. احصلي على 4 زجاجات من زيوتنا المميزة بسعر خاص. عرض محدود لفترة محدودة!",
+    longDescription: "مجموعة كاملة من زيوت Crystal Oil الفاخرة. احصلي على 4 زجاجات من زيوتنا المميزة بسعر خاص. عرض محدود لفترة محدودة!",
     featured: true,
     options: [
       {

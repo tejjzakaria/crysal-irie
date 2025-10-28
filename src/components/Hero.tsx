@@ -47,7 +47,7 @@ const Hero = () => {
           <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
             <span className="text-foreground">CRYSTAL</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-              {" + "}IRIE
+              {" "}OIL
             </span>
           </h1>
           

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Star, Check, Sparkles, Heart, Shield, Droplet } from "lucide-react";
+import { Star, Check, Sparkles, Heart, Shield, Droplet } from "lucide-react";
 import { products } from "@/data/products";
 import OrderForm from "@/components/OrderForm";
 
@@ -24,21 +24,6 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen" dir="rtl">
-      {/* Header */}
-      <header className="sticky top-0 z-50 glass-card border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/">
-            <Button variant="ghost" className="gap-2">
-              <ArrowRight className="w-4 h-4" />
-              العودة
-            </Button>
-          </Link>
-          <h2 className="text-xl font-bold">
-            CRYSTAL<span className="text-primary">+</span>IRIE
-          </h2>
-        </div>
-      </header>
-
       {/* Hero Section with Product */}
       <section className="relative py-20 px-4 overflow-hidden">
         {/* Animated background */}
@@ -343,7 +328,7 @@ const ProductDetail = () => {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    كنت أبحث عن منتج طبيعي وآمن لبشرتي الحساسة، ولقيت ضالتي في هذا الزيت. ما سبب لي أي حساسية ونتيجته ممتازة. التوصيل كان سريع والتغليف محترم. شكراً Crystalirie! 🌸
+                    كنت أبحث عن منتج طبيعي وآمن لبشرتي الحساسة، ولقيت ضالتي في هذا الزيت. ما سبب لي أي حساسية ونتيجته ممتازة. التوصيل كان سريع والتغليف محترم. شكراً Crystal Oil! 🌸
                   </p>
                 </div>
               </div>
