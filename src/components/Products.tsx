@@ -82,6 +82,15 @@ const Products = () => {
           ))}
         </div>
 
+        {/* View All Products Button */}
+        <div className="text-center mt-12">
+          <Link to="/products">
+            <Button size="lg" className="text-lg px-8 py-6 rounded-full">
+              عرض جميع المنتجات
+            </Button>
+          </Link>
+        </div>
+
         {/* Special Bundle Section */}
         <div className="mt-16 glass-card rounded-3xl p-8 md:p-12 text-center">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
