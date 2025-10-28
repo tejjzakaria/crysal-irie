@@ -85,7 +85,7 @@ const Products = () => {
         {/* Special Bundle Section */}
         <div className="mt-16 glass-card rounded-3xl p-8 md:p-12 text-center">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            عرض خاص محدود 🎁
+            عرض خاص ومحدود 🎁
           </h3>
           <p className="text-xl text-muted-foreground mb-6">
             اشتري 4 زجاجات بـ 399 درهم فقط بدل 690 درهم
