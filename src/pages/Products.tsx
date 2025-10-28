@@ -31,51 +31,52 @@ const Products = () => {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
-              <Card
+              <Link
                 key={product.id}
-                className="hover-lift overflow-hidden border-0 shadow-lg"
+                to={`/product/${product.id}`}
+                className="block"
               >
-                <div className="relative h-80 overflow-hidden">
-                  {product.discount && (
-                    <Badge className="absolute top-4 left-4 z-10 text-base px-3 py-1">
-                      -{product.discount}
-                    </Badge>
-                  )}
-                  {product.featured && (
-                    <Badge className="absolute top-4 right-4 z-10 text-base px-3 py-1 bg-accent text-accent-foreground">
-                      عرض خاص
-                    </Badge>
-                  )}
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-3">{product.name}</h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {product.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold text-primary">
-                        {product.price}
-                      </span>
-                      {product.oldPrice && (
-                        <span className="text-lg text-muted-foreground line-through">
-                          {product.oldPrice}
+                <Card className="hover-lift overflow-hidden border-0 shadow-lg group cursor-pointer">
+                  <div className="relative h-80 overflow-hidden">
+                    {product.discount && (
+                      <Badge className="absolute top-4 left-4 z-10 text-base px-3 py-1">
+                        -{product.discount}
+                      </Badge>
+                    )}
+                    {product.featured && (
+                      <Badge className="absolute top-4 right-4 z-10 text-base px-3 py-1 bg-accent text-accent-foreground">
+                        عرض خاص
+                      </Badge>
+                    )}
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-bold mb-3">{product.name}</h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {product.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl font-bold text-primary">
+                          {product.price}
                         </span>
-                      )}
-                    </div>
-                    <Link to={`/product/${product.id}`}>
+                        {product.oldPrice && (
+                          <span className="text-lg text-muted-foreground line-through">
+                            {product.oldPrice}
+                          </span>
+                        )}
+                      </div>
                       <Button size="lg">
                         أطلبي الآن
                       </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

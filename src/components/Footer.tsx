@@ -217,11 +217,11 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4">تابعينا</h4>
             <div className="flex gap-3 justify-center">
               <a href="https://www.instagram.com/crystaloil.ma/" target="_blank">
-              <Button size="icon" variant="outline" className="rounded-full">
+              <Button size="icon" variant="outline" className="rounded-full hover:bg-primary hover:text-primary-foreground hover:border-primary">
                 <Instagram className="w-5 h-5" />
               </Button></a>
               <a href="https://web.facebook.com/crystaloil.MA" target="_blank">
-              <Button size="icon" variant="outline" className="rounded-full">
+              <Button size="icon" variant="outline" className="rounded-full hover:bg-primary hover:text-primary-foreground hover:border-primary">
                 <Facebook className="w-5 h-5" />
               </Button></a>
             </div>

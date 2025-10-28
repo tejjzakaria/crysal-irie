@@ -7,7 +7,6 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Guarantee from "@/components/Guarantee";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -21,7 +20,6 @@ const Index = () => {
       <Guarantee />
       <Testimonials />
       <FAQ />
-      <Footer />
     </div>
   );
 };

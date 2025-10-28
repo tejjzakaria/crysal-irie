@@ -39,7 +39,9 @@ const Header = () => {
               <Link key={item.path} to={item.path}>
                 <Button
                   variant={isActive(item.path) ? "default" : "ghost"}
-                  className="text-base"
+                  className={`text-base ${
+                    !isActive(item.path) ? "hover:bg-primary hover:text-primary-foreground" : ""
+                  }`}
                 >
                   {item.name}
                 </Button>
@@ -72,7 +74,9 @@ const Header = () => {
               >
                 <Button
                   variant={isActive(item.path) ? "default" : "ghost"}
-                  className="w-full text-base justify-start"
+                  className={`w-full text-base justify-start ${
+                    !isActive(item.path) ? "hover:bg-primary hover:text-primary-foreground" : ""
+                  }`}
                 >
                   {item.name}
                 </Button>
