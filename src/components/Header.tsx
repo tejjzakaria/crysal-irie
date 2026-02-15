@@ -1,11 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "الرئيسية", path: "/" },
@@ -20,8 +30,17 @@ const Header = () => {
     return false;
   };
 
+  const isHomePage = location.pathname === "/";
+
   return (
-    <header className="sticky top-0 z-50 glass-card border-b" dir="rtl">
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled || !isHomePage
+          ? "glass-card border-b"
+          : "bg-transparent border-transparent"
+      }`}
+      dir="rtl"
+    >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -40,7 +59,11 @@ const Header = () => {
                 <Button
                   variant={isActive(item.path) ? "default" : "ghost"}
                   className={`text-base ${
-                    !isActive(item.path) ? "hover:bg-primary hover:text-primary-foreground" : ""
+                    !isScrolled && isHomePage
+                      ? "text-white hover:bg-white/20"
+                      : !isActive(item.path)
+                      ? "hover:bg-primary hover:text-primary-foreground"
+                      : ""
                   }`}
                 >
                   {item.name}
@@ -51,7 +74,9 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className={`md:hidden p-2 ${
+              !isScrolled && isHomePage ? "text-white" : ""
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -75,7 +100,11 @@ const Header = () => {
                 <Button
                   variant={isActive(item.path) ? "default" : "ghost"}
                   className={`w-full text-base justify-start ${
-                    !isActive(item.path) ? "hover:bg-primary hover:text-primary-foreground" : ""
+                    !isScrolled && isHomePage
+                      ? "text-white hover:bg-white/20"
+                      : !isActive(item.path)
+                      ? "hover:bg-primary hover:text-primary-foreground"
+                      : ""
                   }`}
                 >
                   {item.name}

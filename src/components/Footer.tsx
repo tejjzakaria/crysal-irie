@@ -29,12 +29,9 @@ const Footer = () => {
     address: string;
   }) => {
     if (!GOOGLE_SHEETS_URL) {
-      console.error('Google Sheets URL is not configured');
       return { success: false, error: 'URL not configured' };
     }
 
-    console.log('Sending contact to Google Sheets:', contactData);
-    console.log('URL:', GOOGLE_SHEETS_URL);
 
     try {
       await fetch(GOOGLE_SHEETS_URL, {
@@ -49,10 +46,8 @@ const Footer = () => {
         }),
       });
 
-      console.log('Request sent successfully');
       return { success: true };
     } catch (error) {
-      console.error('Error sending to Google Sheets:', error);
       return { success: false, error };
     }
   };
@@ -118,65 +113,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-b from-background to-muted/50 pt-20 pb-10 px-4" dir="rtl">
       <div className="container mx-auto">
         {/* CTA Section */}
-        <div className="glass-card rounded-3xl p-8 md:p-12 text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            هل ترغبين بتجربة منتجاتنا؟🛍️
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          املئي المعلومات التالية وسنتواصل معك لتأكيد الطلب في أقرب وقت.
-          </p>
-
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
-            <div>
-              <Input
-                placeholder="أدخلي إسمك هنا 🙋‍♀️"
-                className={`text-center text-lg py-6 rounded-full ${errors.name ? "border-destructive" : ""}`}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                maxLength={100}
-                required
-              />
-              {errors.name && (
-                <p className="text-sm text-destructive mt-1">{errors.name}</p>
-              )}
-            </div>
-            <div>
-              <Input
-                placeholder="أدخلي رقم الهاتف 📲"
-                className={`text-center text-lg py-6 rounded-full ${errors.phone ? "border-destructive" : ""}`}
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                type="tel"
-                maxLength={20}
-                required
-              />
-              {errors.phone && (
-                <p className="text-sm text-destructive mt-1">{errors.phone}</p>
-              )}
-            </div>
-            <div>
-              <Input
-                placeholder="أدخلي عنوان السكن 🏠"
-                className={`text-center text-lg py-6 rounded-full ${errors.address ? "border-destructive" : ""}`}
-                value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                maxLength={200}
-                required
-              />
-              {errors.address && (
-                <p className="text-sm text-destructive mt-1">{errors.address}</p>
-              )}
-            </div>
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full text-lg py-6 rounded-full"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "جاري إرسال الطلب..." : "أطلبي الآن | لا تترددي ✨"}
-            </Button>
-          </form>
-        </div>
+        
 
         {/* Footer Info */}
         <div className="grid md:grid-cols-3 gap-12 mb-12">

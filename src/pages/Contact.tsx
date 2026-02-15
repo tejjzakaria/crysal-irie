@@ -31,11 +31,9 @@ const Contact = () => {
 
   const sendToGoogleSheets = async (contactData: typeof formData) => {
     if (!GOOGLE_SHEETS_URL) {
-      console.error('Google Sheets URL is not configured');
       return { success: false, error: 'URL not configured' };
     }
 
-    console.log('Sending contact message to Google Sheets:', contactData);
 
     try {
       await fetch(GOOGLE_SHEETS_URL, {
@@ -50,10 +48,8 @@ const Contact = () => {
         }),
       });
 
-      console.log('Request sent successfully');
       return { success: true };
     } catch (error) {
-      console.error('Error sending to Google Sheets:', error);
       return { success: false, error };
     }
   };

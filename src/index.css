@@ -8,77 +8,81 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 160 50% 98%;
-    --foreground: 160 15% 15%;
+    --background: 180 20% 98%;
+    --foreground: 200 15% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 160 15% 15%;
+    --card-foreground: 200 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 160 15% 15%;
+    --popover-foreground: 200 15% 20%;
 
-    --primary: 165 70% 55%;
+    --primary: 180 65% 45%;
     --primary-foreground: 0 0% 100%;
-    
-    --primary-glow: 165 80% 70%;
 
-    --secondary: 340 75% 65%;
+    --primary-glow: 180 70% 55%;
+
+    --secondary: 180 45% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 160 30% 95%;
-    --muted-foreground: 160 10% 45%;
+    --muted: 180 15% 92%;
+    --muted-foreground: 200 10% 45%;
 
-    --accent: 280 70% 65%;
+    --accent: 180 75% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 160 30% 90%;
-    --input: 160 30% 90%;
-    --ring: 165 70% 55%;
+    --border: 180 20% 90%;
+    --input: 180 20% 90%;
+    --ring: 180 65% 45%;
 
     --radius: 1rem;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(165 70% 85%) 0%, hsl(340 75% 85%) 50%, hsl(280 70% 85%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(165 70% 95%) 0%, hsl(340 75% 95%) 100%);
-    
-    --shadow-soft: 0 4px 20px hsl(165 70% 55% / 0.15);
-    --shadow-hover: 0 8px 30px hsl(165 70% 55% / 0.25);
-    
+
+    --gradient-hero: linear-gradient(135deg, hsl(180 30% 95%) 0%, hsl(180 20% 88%) 30%, hsl(180 65% 75%) 70%, hsl(180 75% 55%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(180 20% 95%) 0%, hsl(180 25% 95%) 100%);
+    --gradient-gold-shimmer: linear-gradient(90deg, hsl(180 65% 45% / 0) 0%, hsl(180 65% 45% / 0.3) 50%, hsl(180 65% 45% / 0) 100%);
+
+    --warm-beige: 180 15% 88%;
+    --cream: 180 20% 95%;
+
+    --shadow-soft: 0 4px 20px hsl(180 65% 45% / 0.15);
+    --shadow-hover: 0 8px 30px hsl(180 65% 45% / 0.25);
+
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 160 30% 10%;
-    --foreground: 160 30% 95%;
+    --background: 200 20% 12%;
+    --foreground: 180 20% 95%;
 
-    --card: 160 25% 12%;
-    --card-foreground: 160 30% 95%;
+    --card: 200 20% 15%;
+    --card-foreground: 180 20% 95%;
 
-    --popover: 160 25% 12%;
-    --popover-foreground: 160 30% 95%;
+    --popover: 200 20% 15%;
+    --popover-foreground: 180 20% 95%;
 
-    --primary: 165 70% 55%;
+    --primary: 180 65% 45%;
     --primary-foreground: 0 0% 100%;
-    
-    --primary-glow: 165 80% 70%;
 
-    --secondary: 340 75% 65%;
+    --primary-glow: 180 70% 55%;
+
+    --secondary: 180 45% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 160 25% 20%;
-    --muted-foreground: 160 20% 60%;
+    --muted: 200 15% 20%;
+    --muted-foreground: 200 15% 60%;
 
-    --accent: 280 70% 65%;
+    --accent: 180 75% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 160 25% 20%;
-    --input: 160 25% 20%;
-    --ring: 165 70% 55%;
+    --border: 200 15% 25%;
+    --input: 200 15% 25%;
+    --ring: 180 65% 45%;
   }
 }
 
@@ -135,5 +139,167 @@ All colors MUST be HSL.
   .hover-lift:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
+  }
+
+  /* Accessibility: Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float-gentle,
+    .animate-float,
+    .animate-parallax-slow,
+    .animate-parallax-medium,
+    .animate-gradient,
+    .animate-bounce,
+    .animate-shimmer,
+    .animate-glow-pulse,
+    .animate-fade-up,
+    .animate-fade-in {
+      animation: none;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Tiptap Editor Styles */
+  .ProseMirror {
+    outline: none;
+    min-height: 250px;
+    padding: 1rem;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    color: hsl(var(--muted-foreground));
+    content: attr(data-placeholder);
+    float: right;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .ProseMirror img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .ProseMirror a {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .ProseMirror ul,
+  .ProseMirror ol {
+    padding-right: 1.5rem;
+    padding-left: 0;
+  }
+
+  .ProseMirror h1,
+  .ProseMirror h2,
+  .ProseMirror h3 {
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .ProseMirror h1 {
+    font-size: 2em;
+  }
+
+  .ProseMirror h2 {
+    font-size: 1.5em;
+  }
+
+  .ProseMirror h3 {
+    font-size: 1.25em;
+  }
+
+  .ProseMirror code {
+    background-color: hsl(var(--muted));
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+
+  .ProseMirror pre {
+    background-color: hsl(var(--muted));
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .ProseMirror blockquote {
+    border-right: 3px solid hsl(var(--primary));
+    padding-right: 1rem;
+    margin-right: 0;
+    font-style: italic;
+  }
+
+  /* React Quill Editor Styles */
+  .rich-text-editor .quill {
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .rich-text-editor .ql-toolbar {
+    background-color: hsl(var(--muted));
+    border: none;
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0.75rem;
+  }
+
+  .rich-text-editor .ql-container {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .rich-text-editor .ql-editor {
+    min-height: 250px;
+    padding: 1rem;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .rich-text-editor .ql-editor.ql-blank::before {
+    right: 1rem;
+    left: auto;
+    font-style: normal;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .rich-text-editor .ql-toolbar button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .rich-text-editor .ql-toolbar button:hover,
+  .rich-text-editor .ql-toolbar button.ql-active {
+    color: hsl(var(--primary));
+  }
+
+  .rich-text-editor .ql-stroke {
+    stroke: currentColor;
+  }
+
+  .rich-text-editor .ql-fill {
+    fill: currentColor;
+  }
+
+  .rich-text-editor .ql-editor img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .rich-text-editor .ql-editor a {
+    color: hsl(var(--primary));
+    text-decoration: underline;
   }
 }
