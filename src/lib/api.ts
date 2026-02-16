@@ -40,8 +40,12 @@ export const productsApi = {
   },
 
   getBySlug: async (slug: string) => {
-    const response = await fetch(`${API_URL}/products/slug/${slug}`);
-    if (!response.ok) throw new Error('Failed to fetch product');
+    const response = await fetch(`${API_URL}/products/by-slug?slug=${encodeURIComponent(slug)}`);
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Failed to fetch product by slug:', slug, errorData);
+      throw new Error('Failed to fetch product');
+    }
     return response.json();
   },
 
