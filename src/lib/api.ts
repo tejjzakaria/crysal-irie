@@ -102,7 +102,7 @@ export const ordersApi = {
   },
 
   updateStatus: async (id: string, status: string) => {
-    const response = await fetch(`${API_URL}/orders/${id}/status`, {
+    const response = await fetch(`${API_URL}/orders/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status }),
