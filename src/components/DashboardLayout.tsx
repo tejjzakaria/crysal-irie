@@ -5,6 +5,7 @@ import {
   LayoutDashboard,
   ShoppingBag,
   Package,
+  LayoutGrid,
   LogOut,
   Home,
   Menu,
@@ -36,6 +37,11 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       name: "المنتجات",
       path: "/dashboard/products",
       icon: Package,
+    },
+    {
+      name: "التصنيفات",
+      path: "/dashboard/categories",
+      icon: LayoutGrid,
     },
   ];
 

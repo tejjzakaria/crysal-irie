@@ -17,6 +17,7 @@ import Orders from "./pages/admin/Orders";
 import AdminProducts from "./pages/admin/Products";
 import AddProduct from "./pages/admin/AddProduct";
 import EditProduct from "./pages/admin/EditProduct";
+import AdminCategories from "./pages/admin/Categories";
 import Login from "./pages/admin/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
@@ -47,6 +48,7 @@ const AppContent = () => {
         <Route path="/dashboard/products" element={<ProtectedRoute><AdminProducts /></ProtectedRoute>} />
         <Route path="/dashboard/products/add" element={<ProtectedRoute><AddProduct /></ProtectedRoute>} />
         <Route path="/dashboard/products/edit/:id" element={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
+        <Route path="/dashboard/categories" element={<ProtectedRoute><AdminCategories /></ProtectedRoute>} />
 
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />

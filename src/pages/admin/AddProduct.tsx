@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,7 @@ import {
 import { ArrowRight, Save, Loader2, Plus, X, Upload, Tag, FileText, DollarSign, Image as ImageIcon, Star, Gift, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/DashboardLayout";
-import { productsApi } from "@/lib/api";
+import { productsApi, categoriesApi } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import RichTextEditor from "@/components/RichTextEditor";
 
@@ -22,6 +22,13 @@ const AddProduct = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [saving, setSaving] = useState(false);
+  const [categories, setCategories] = useState<{ _id: string; title: string }[]>([]);
+
+  useEffect(() => {
+    categoriesApi.getAll().then((data) => {
+      setCategories(data.filter((c: any) => c.isActive));
+    }).catch(() => {});
+  }, []);
   const [productData, setProductData] = useState({
     // Basic Information
     name: "",
@@ -340,17 +347,14 @@ const AddProduct = () => {
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="اختر الفئة" />
+                      <SelectValue placeholder={categories.length === 0 ? "لا توجد تصنيفات" : "اختر الفئة"} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="زيوت طبيعية">زيوت طبيعية</SelectItem>
-                      <SelectItem value="عطور">عطور</SelectItem>
-                      <SelectItem value="مستحضرات تجميل">
-                        مستحضرات تجميل
-                      </SelectItem>
-                      <SelectItem value="عناية بالبشرة">
-                        عناية بالبشرة
-                      </SelectItem>
+                      {categories.map((cat) => (
+                        <SelectItem key={cat._id} value={cat.title}>
+                          {cat.title}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
