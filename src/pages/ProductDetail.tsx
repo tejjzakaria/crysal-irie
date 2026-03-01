@@ -315,14 +315,16 @@ const ProductDetail = () => {
                         />
                       </button>
                       <div
-                        className={`overflow-hidden transition-all duration-300 ${
-                          openAccordions.short ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        className={`grid transition-all duration-300 ${
+                          openAccordions.short ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                         }`}
                       >
-                        <div className="p-5 pt-0 border-t border-primary/10">
-                          <p className="text-muted-foreground leading-relaxed">
-                            {product.shortDescription}
-                          </p>
+                        <div className="overflow-hidden">
+                          <div className="p-5 pt-0 border-t border-primary/10">
+                            <p className="text-muted-foreground leading-relaxed">
+                              {product.shortDescription}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -341,16 +343,18 @@ const ProductDetail = () => {
                         />
                       </button>
                       <div
-                        className={`overflow-hidden transition-all duration-300 ${
-                          openAccordions.full ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                        className={`grid transition-all duration-300 ${
+                          openAccordions.full ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                         }`}
                       >
-                        <div className="p-5 pt-0 border-t border-primary/10">
-                          <div
-                            className="prose prose-sm sm:prose lg:prose-lg max-w-none text-muted-foreground leading-relaxed"
-                            dir="rtl"
-                            dangerouslySetInnerHTML={{ __html: product.fullDescription }}
-                          />
+                        <div className="overflow-hidden">
+                          <div className="p-5 pt-0 border-t border-primary/10">
+                            <div
+                              className="prose prose-sm sm:prose lg:prose-lg max-w-none text-muted-foreground leading-relaxed"
+                              dir="rtl"
+                              dangerouslySetInnerHTML={{ __html: product.fullDescription }}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
