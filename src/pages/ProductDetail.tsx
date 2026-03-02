@@ -299,67 +299,35 @@ const ProductDetail = () => {
                   )}
                 </div>
 
-                {/* Descriptions */}
-                <div className="space-y-4 mb-6">
-                  {product.shortDescription && (
-                    <div className="glass-card rounded-xl overflow-hidden border border-primary/10">
-                      <button
-                        onClick={() => toggleAccordion('short')}
-                        className="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-colors"
-                      >
-                        <span className="text-lg font-bold">الوصف المختصر</span>
-                        <ChevronDown
-                          className={`w-5 h-5 transition-transform duration-300 ${
-                            openAccordions.short ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-                      <div
-                        className={`grid transition-all duration-300 ${
-                          openAccordions.short ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                {/* Short Description */}
+                {product.shortDescription && (
+                  <div className="glass-card rounded-xl overflow-hidden border border-primary/10 mb-4">
+                    <button
+                      onClick={() => toggleAccordion('short')}
+                      className="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-colors"
+                    >
+                      <span className="text-lg font-bold">الوصف المختصر</span>
+                      <ChevronDown
+                        className={`w-5 h-5 transition-transform duration-300 ${
+                          openAccordions.short ? 'rotate-180' : ''
                         }`}
-                      >
-                        <div className="overflow-hidden">
-                          <div className="p-5 pt-0 border-t border-primary/10">
-                            <p className="text-muted-foreground leading-relaxed">
-                              {product.shortDescription}
-                            </p>
-                          </div>
+                      />
+                    </button>
+                    <div
+                      className={`grid transition-all duration-300 ${
+                        openAccordions.short ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="p-5 pt-0 border-t border-primary/10">
+                          <p className="text-muted-foreground leading-relaxed">
+                            {product.shortDescription}
+                          </p>
                         </div>
                       </div>
                     </div>
-                  )}
-                  {product.fullDescription && (
-                    <div className="glass-card rounded-xl overflow-hidden border border-primary/10">
-                      <button
-                        onClick={() => toggleAccordion('full')}
-                        className="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-colors"
-                      >
-                        <span className="text-lg font-bold">الوصف الكامل</span>
-                        <ChevronDown
-                          className={`w-5 h-5 transition-transform duration-300 ${
-                            openAccordions.full ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-                      <div
-                        className={`grid transition-all duration-300 ${
-                          openAccordions.full ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-                        }`}
-                      >
-                        <div className="overflow-hidden">
-                          <div className="p-5 pt-0 border-t border-primary/10">
-                            <div
-                              className="prose prose-sm sm:prose lg:prose-lg max-w-none text-muted-foreground leading-relaxed"
-                              dir="rtl"
-                              dangerouslySetInnerHTML={{ __html: product.fullDescription }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
 
               {/* Order Form */}
@@ -372,11 +340,43 @@ const ProductDetail = () => {
                       label: offer.title || "",
                       price: offer.price ? `${offer.price} MAD` : `${product.price} MAD`,
                       description: offer.description || "",
-                      highlighted: index === product.offers!.length - 1, // Highlight last offer
+                      highlighted: index === product.offers!.length - 1,
                     }))
                   : []
                 }
               />
+
+              {/* Full Description */}
+              {product.fullDescription && (
+                <div className="glass-card rounded-xl overflow-hidden border border-primary/10">
+                  <button
+                    onClick={() => toggleAccordion('full')}
+                    className="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-colors"
+                  >
+                    <span className="text-lg font-bold">الوصف الكامل</span>
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-300 ${
+                        openAccordions.full ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ${
+                      openAccordions.full ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="p-5 pt-0 border-t border-primary/10">
+                        <div
+                          className="prose prose-sm sm:prose lg:prose-lg max-w-none text-muted-foreground leading-relaxed"
+                          dir="rtl"
+                          dangerouslySetInnerHTML={{ __html: product.fullDescription }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
