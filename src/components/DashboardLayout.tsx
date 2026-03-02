@@ -6,6 +6,7 @@ import {
   ShoppingBag,
   Package,
   LayoutGrid,
+  ScanLine,
   LogOut,
   Home,
   Menu,
@@ -42,6 +43,11 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       name: "التصنيفات",
       path: "/dashboard/categories",
       icon: LayoutGrid,
+    },
+    {
+      name: "إعدادات البكسل",
+      path: "/dashboard/pixels",
+      icon: ScanLine,
     },
   ];
 

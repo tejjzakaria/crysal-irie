@@ -124,6 +124,34 @@ export const categoriesApi = {
   },
 };
 
+// Settings API
+export const settingsApi = {
+  get: async () => {
+    const response = await fetch(`${API_URL}/settings`);
+    if (!response.ok) throw new Error('Failed to fetch settings');
+    return response.json();
+  },
+
+  update: async (data: {
+    facebookPixelId?: string;
+    facebookPixelEnabled?: boolean;
+    tiktokPixelId?: string;
+    tiktokPixelEnabled?: boolean;
+    snapchatPixelId?: string;
+    snapchatPixelEnabled?: boolean;
+    googleTagManagerId?: string;
+    googleTagManagerEnabled?: boolean;
+  }) => {
+    const response = await fetch(`${API_URL}/settings`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to update settings');
+    return response.json();
+  },
+};
+
 // Orders API
 export const ordersApi = {
   getAll: async () => {

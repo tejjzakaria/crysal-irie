@@ -12,6 +12,7 @@ import productRoutes from './routes/products.js';
 import orderRoutes from './routes/orders.js';
 import uploadRoutes from './routes/upload.js';
 import categoryRoutes from './routes/categories.js';
+import settingsRoutes from './routes/settings.js';
 
 // Get directory name in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -82,6 +83,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

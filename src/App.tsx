@@ -18,8 +18,10 @@ import AdminProducts from "./pages/admin/Products";
 import AddProduct from "./pages/admin/AddProduct";
 import EditProduct from "./pages/admin/EditProduct";
 import AdminCategories from "./pages/admin/Categories";
+import AdminPixels from "./pages/admin/Pixels";
 import Login from "./pages/admin/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PixelScripts from "./components/PixelScripts";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +51,7 @@ const AppContent = () => {
         <Route path="/dashboard/products/add" element={<ProtectedRoute><AddProduct /></ProtectedRoute>} />
         <Route path="/dashboard/products/edit/:id" element={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
         <Route path="/dashboard/categories" element={<ProtectedRoute><AdminCategories /></ProtectedRoute>} />
+        <Route path="/dashboard/pixels" element={<ProtectedRoute><AdminPixels /></ProtectedRoute>} />
 
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
@@ -65,6 +68,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <PixelScripts />
         <AppContent />
       </BrowserRouter>
       <Analytics />
