@@ -24,9 +24,15 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  const { id } = req.query;
+  // Fallback: extract id from URL path if req.query.id is not populated
+  // (can happen when the request is routed via a vercel.json rewrite)
+  const id = req.query.id || req.url?.split('/').filter(Boolean).pop()?.split('?')[0];
 
   try {
+    if (!id) {
+      return res.status(400).json({ message: 'Product ID is required' });
+    }
+
     await connectToDatabase();
 
     // GET single product
@@ -62,6 +68,10 @@ export default async function handler(req, res) {
 
     return res.status(405).json({ message: 'Method not allowed' });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    console.error(`API Error [/api/products/${id}]:`, error);
+    return res.status(500).json({
+      message: error.message,
+      error: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
   }
 }

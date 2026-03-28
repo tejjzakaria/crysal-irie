@@ -27,9 +27,13 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const { id } = req.query;
+  const id = req.query.id || req.url?.split('/').filter(Boolean).pop()?.split('?')[0];
 
   try {
+    if (!id) {
+      return res.status(400).json({ message: 'Category ID is required' });
+    }
+
     await connectToDatabase();
 
     if (req.method === 'GET') {

@@ -24,9 +24,13 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  const { id } = req.query;
+  const id = req.query.id || req.url?.split('/').filter(Boolean).pop()?.split('?')[0];
 
   try {
+    if (!id) {
+      return res.status(400).json({ message: 'Order ID is required' });
+    }
+
     await connectToDatabase();
 
     // GET single order
