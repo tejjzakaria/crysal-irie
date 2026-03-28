@@ -39,13 +39,11 @@ export default async function handler(req, res) {
     }
 
     if (req.method === 'PUT') {
-      let settings = await Settings.findOne();
-      if (!settings) {
-        settings = await Settings.create(req.body);
-      } else {
-        Object.assign(settings, req.body);
-        await settings.save();
-      }
+      const settings = await Settings.findOneAndUpdate(
+        {},
+        { $set: req.body },
+        { new: true, upsert: true }
+      );
       return res.status(200).json(settings);
     }
 

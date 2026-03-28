@@ -19,13 +19,11 @@ router.get('/', async (req, res) => {
 // UPDATE settings
 router.put('/', async (req, res) => {
   try {
-    let settings = await Settings.findOne();
-    if (!settings) {
-      settings = await Settings.create(req.body);
-    } else {
-      Object.assign(settings, req.body);
-      await settings.save();
-    }
+    const settings = await Settings.findOneAndUpdate(
+      {},
+      { $set: req.body },
+      { new: true, upsert: true }
+    );
     res.json(settings);
   } catch (error) {
     res.status(400).json({ message: error.message });
