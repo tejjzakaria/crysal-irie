@@ -133,6 +133,7 @@ export const settingsApi = {
   },
 
   update: async (data: {
+    footerDescription?: string;
     facebookPixelId?: string;
     facebookPixelEnabled?: boolean;
     tiktokPixelId?: string;

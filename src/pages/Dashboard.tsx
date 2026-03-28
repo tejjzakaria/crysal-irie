@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Save, ShoppingBag, Package, TrendingUp, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/DashboardLayout";
-import { heroApi, ordersApi, productsApi } from "@/lib/api";
+import { heroApi, ordersApi, productsApi, settingsApi } from "@/lib/api";
 
 interface HeroData {
   trustBadge: string;
@@ -27,6 +27,8 @@ const DEFAULT_HERO_DATA: HeroData = {
 const Dashboard = () => {
   const [heroData, setHeroData] = useState<HeroData>(DEFAULT_HERO_DATA);
   const [saving, setSaving] = useState(false);
+  const [footerDescription, setFooterDescription] = useState("");
+  const [savingFooter, setSavingFooter] = useState(false);
   const [stats, setStats] = useState({
     orders: 0,
     products: 0,
@@ -37,6 +39,7 @@ const Dashboard = () => {
   useEffect(() => {
     loadHeroData();
     loadStats();
+    loadFooterDescription();
   }, []);
 
   const loadHeroData = async () => {
@@ -51,6 +54,34 @@ const Dashboard = () => {
       });
     } catch (error) {
       // Silently handle error
+    }
+  };
+
+  const loadFooterDescription = async () => {
+    try {
+      const data = await settingsApi.get();
+      setFooterDescription(data.footerDescription || "");
+    } catch (error) {
+      // Silently handle error
+    }
+  };
+
+  const handleSaveFooter = async () => {
+    setSavingFooter(true);
+    try {
+      await settingsApi.update({ footerDescription });
+      toast({
+        title: "تم الحفظ بنجاح",
+        description: "تم حفظ وصف المتجر في الفوتر",
+      });
+    } catch (error) {
+      toast({
+        title: "خطأ في الحفظ",
+        description: "فشل حفظ التغييرات. الرجاء المحاولة مرة أخرى",
+        variant: "destructive",
+      });
+    } finally {
+      setSavingFooter(false);
     }
   };
 
@@ -137,6 +168,36 @@ const Dashboard = () => {
                 <TrendingUp className="w-6 h-6 text-accent" />
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Footer Description Editor */}
+        <div className="glass-card rounded-xl p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">وصف المتجر في الفوتر</h2>
+            <Button onClick={handleSaveFooter} disabled={savingFooter}>
+              {savingFooter ? (
+                <>
+                  <Loader2 className="w-4 h-4 ml-2 animate-spin" />
+                  جاري الحفظ...
+                </>
+              ) : (
+                <>
+                  <Save className="w-4 h-4 ml-2" />
+                  حفظ التغييرات
+                </>
+              )}
+            </Button>
+          </div>
+          <div>
+            <Label htmlFor="footerDescription">وصف المتجر</Label>
+            <Textarea
+              id="footerDescription"
+              value={footerDescription}
+              onChange={(e) => setFooterDescription(e.target.value)}
+              placeholder="أدخل وصف المتجر الذي يظهر في أسفل الصفحة..."
+              rows={4}
+            />
           </div>
         </div>
 

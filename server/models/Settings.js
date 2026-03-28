@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const settingsSchema = new mongoose.Schema({
+  footerDescription: { type: String, default: '' },
   facebookPixelId: { type: String, default: '' },
   facebookPixelEnabled: { type: Boolean, default: false },
   tiktokPixelId: { type: String, default: '' },

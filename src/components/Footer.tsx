@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Phone, MapPin, Mail, Instagram, Facebook } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { settingsApi } from "@/lib/api";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, { message: "الاسم يجب أن يكون حرفين على الأقل" }).max(100, { message: "الاسم طويل جداً" }),
@@ -11,8 +12,11 @@ const contactSchema = z.object({
   address: z.string().trim().min(5, { message: "العنوان يجب أن يكون واضحاً" }).max(200, { message: "العنوان طويل جداً" }),
 });
 
+const DEFAULT_FOOTER_DESCRIPTION = "كريستال أويل هي علامة متخصصة في العناية الذاتية الطبيعية، تقدم صابونًا وزيوتًا فاخرة مصنوعة يدويًا من مكونات نباتية نقية. تم تصميم كل منتج ليغذي البشرة ويحوّل روتينك اليومي إلى لحظة من الهدوء والدلال. بلمسات أنيقة وروائح لطيفة وملمس غني، تجمع كريستال أويل بين الطبيعة والفخامة لتمنحك تجربة عناية حسية وأصيلة.";
+
 const Footer = () => {
   const { toast } = useToast();
+  const [footerDescription, setFooterDescription] = useState(DEFAULT_FOOTER_DESCRIPTION);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,6 +26,12 @@ const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const GOOGLE_SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL || "";
+
+  useEffect(() => {
+    settingsApi.get().then((data) => {
+      if (data.footerDescription) setFooterDescription(data.footerDescription);
+    }).catch(() => {});
+  }, []);
 
   const sendToGoogleSheets = async (contactData: {
     name: string;
@@ -126,7 +136,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              كريستال أويل هي علامة متخصصة في العناية الذاتية الطبيعية، تقدم صابونًا وزيوتًا فاخرة مصنوعة يدويًا من مكونات نباتية نقية. تم تصميم كل منتج ليغذي البشرة ويحوّل روتينك اليومي إلى لحظة من الهدوء والدلال. بلمسات أنيقة وروائح لطيفة وملمس غني، تجمع كريستال أويل بين الطبيعة والفخامة لتمنحك تجربة عناية حسية وأصيلة.
+              {footerDescription}
             </p>
           </div>
 
