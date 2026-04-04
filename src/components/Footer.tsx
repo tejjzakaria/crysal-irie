@@ -93,6 +93,23 @@ const Footer = () => {
         description: "تم حفظ طلبك وسيتم التواصل معك في أقرب وقت",
       });
 
+      // Track lead form submission
+      const ttq = (window as any).ttq;
+      if (ttq?.track) {
+        ttq.track("SubmitForm", {
+          content_name: "Footer Contact Form",
+          content_type: "lead",
+        });
+      }
+
+      const fbq = (window as any).fbq;
+      if (fbq) {
+        fbq('track', 'Lead', {
+          content_name: "Footer Contact Form",
+          content_category: "lead",
+        });
+      }
+
       setFormData({
         name: "",
         phone: "",

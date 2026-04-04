@@ -107,21 +107,6 @@ const ProductDetail = () => {
     fetchProduct();
   }, [slug]);
 
-  useEffect(() => {
-    if (!product) return;
-
-    const ttq = (window as any).ttq;
-    if (ttq?.track) {
-      ttq.track("ViewContent", {
-        content_name: product.name,
-        content_type: "product",
-        content_id: product.slug,
-        value: product.price,
-        currency: "USD",
-      });
-    }
-  }, [product]);
-
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center" dir="rtl">

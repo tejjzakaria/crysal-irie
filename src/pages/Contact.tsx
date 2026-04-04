@@ -81,6 +81,23 @@ const Contact = () => {
         description: "سنتواصل معك في أقرب وقت ممكن",
       });
 
+      // Track lead form submission
+      const ttq = (window as any).ttq;
+      if (ttq?.track) {
+        ttq.track("SubmitForm", {
+          content_name: "Contact Form",
+          content_type: "lead",
+        });
+      }
+
+      const fbq = (window as any).fbq;
+      if (fbq) {
+        fbq('track', 'Lead', {
+          content_name: "Contact Form",
+          content_category: "lead",
+        });
+      }
+
       setFormData({
         name: "",
         email: "",

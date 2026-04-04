@@ -38,6 +38,20 @@ const trackTikTokCompletePayment = (payload: Record<string, any>) => {
   }
 };
 
+const trackFacebookPurchase = (payload: Record<string, any>) => {
+  const fbq = (window as any).fbq;
+  if (fbq) {
+    fbq('track', 'Purchase', payload);
+  }
+};
+
+const trackSnapchatPurchase = (payload: Record<string, any>) => {
+  const snaptr = (window as any).snaptr;
+  if (snaptr) {
+    snaptr('track', 'PURCHASE', payload);
+  }
+};
+
 const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFormProps) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -166,6 +180,20 @@ const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFor
         content_name: productName,
         content_type: "product",
         content_id: productSlug || productName,
+      });
+
+      trackFacebookPurchase({
+        value: parsePriceValue(selectedPrice),
+        currency: "USD",
+        content_name: productName,
+        content_type: "product",
+        content_id: productSlug || productName,
+      });
+
+      trackSnapchatPurchase({
+        price: parsePriceValue(selectedPrice),
+        currency: "USD",
+        item_ids: [productSlug || productName],
       });
 
       // Reset form
