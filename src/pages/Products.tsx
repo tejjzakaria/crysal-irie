@@ -51,7 +51,7 @@ const Products = () => {
         />
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            منتجاتنا الفاخرة 💎
+            منتجاتنا الفاخرة
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
             اكتشفي مجموعتنا الكاملة من الزيوت والصابون الطبيعي الفاخر

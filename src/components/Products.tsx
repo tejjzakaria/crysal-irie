@@ -160,25 +160,7 @@ const Products = () => {
           </div>
         )}
 
-        {/* Special Bundle Section */}
-        <div className="mt-16 glass-card rounded-3xl p-8 md:p-12 text-center">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            عرض خاص ومحدود 🎁
-          </h3>
-          <p className="text-xl text-muted-foreground mb-6">
-            اشتري 4 زجاجات بـ 399 درهم فقط بدل 690 درهم
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="text-center">
-              <div className="text-sm text-muted-foreground mb-1">اختاري الحجم:</div>
-              <div className="space-y-2">
-                <div className="glass-card px-4 py-2 rounded-lg">4 زجاجات (15مل) ب 199 درهم</div>
-                <div className="glass-card px-4 py-2 rounded-lg">4 زجاجات (30مل) ب 299 درهم</div>
-                <div className="glass-card px-4 py-2 rounded-lg bg-primary/10">4 زجاجات (118مل) ب 399 درهم ⭐</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
