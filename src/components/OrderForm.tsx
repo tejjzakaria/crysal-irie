@@ -26,6 +26,18 @@ const orderSchema = z.object({
   address: z.string().trim().min(5, { message: "العنوان يجب أن يكون واضحاً" }).max(200, { message: "العنوان طويل جداً" }),
 });
 
+const parsePriceValue = (price: string) => {
+  const normalized = price.replace(/[^0-9.]/g, "");
+  return Number(normalized) || 0;
+};
+
+const trackTikTokCompletePayment = (payload: Record<string, any>) => {
+  const ttq = (window as any).ttq;
+  if (ttq?.track) {
+    ttq.track("CompletePayment", payload);
+  }
+};
+
 const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFormProps) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -51,12 +63,15 @@ const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFor
   const GOOGLE_SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL || "";
 
   const sendToGoogleSheets = async (orderData: {
-    productName: string;
-    productPrice: string;
-    selectedOption: string;
-    name: string;
+    orderId: string;
+    orderDate: string;
+    firstName: string;
     phone: string;
-    address: string;
+    city: string;
+    variantPrice: string;
+    productVariant: string;
+    productName: string;
+    productUrl: string;
   }) => {
     if (!GOOGLE_SHEETS_URL) {
       return { success: false, error: 'URL not configured' };
@@ -143,6 +158,14 @@ const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFor
       toast({
         title: "تم إرسال الطلب بنجاح! ✅",
         description: "تم حفظ طلبك وسيتم التواصل معك في أقرب وقت",
+      });
+
+      trackTikTokCompletePayment({
+        value: parsePriceValue(selectedPrice),
+        currency: "USD",
+        content_name: productName,
+        content_type: "product",
+        content_id: productSlug || productName,
       });
 
       // Reset form
