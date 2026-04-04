@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -54,6 +55,7 @@ const trackSnapchatPurchase = (payload: Record<string, any>) => {
 
 const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFormProps) => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -196,13 +198,18 @@ const OrderForm = ({ productName, productPrice, productSlug, options }: OrderFor
         item_ids: [productSlug || productName],
       });
 
-      // Reset form
-      setFormData({
-        name: "",
-        phone: "",
-        address: "",
-        selectedOption: options?.[options.length - 1]?.label || "",
-      });
+      // Store order data in sessionStorage for thank you page
+      sessionStorage.setItem("lastOrder", JSON.stringify({
+        ...dbOrderData,
+        _id: savedOrder._id,
+        variantPrice: selectedPrice,
+        productVariant: selectedVariant,
+      }));
+
+      // Redirect to thank you page after a brief delay
+      setTimeout(() => {
+        navigate("/thank-you");
+      }, 500);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: Record<string, string> = {};
