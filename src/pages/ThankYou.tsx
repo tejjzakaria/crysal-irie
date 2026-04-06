@@ -5,7 +5,6 @@ import { Check, ShoppingBag, Clock, Truck, Phone } from "lucide-react";
 
 const ThankYou = () => {
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(10);
   const [orderData, setOrderData] = useState<any>(null);
 
   useEffect(() => {
@@ -15,32 +14,8 @@ const ThankYou = () => {
       setOrderData(JSON.parse(data));
       // Clear after retrieving
       sessionStorage.removeItem("lastOrder");
-    } else {
-      // If no order data, redirect to home after 5 seconds
-      const timer = setTimeout(() => {
-        navigate("/");
-      }, 5000);
-      return () => clearTimeout(timer);
     }
-  }, [navigate]);
-
-  useEffect(() => {
-    if (!orderData) return;
-
-    // Countdown timer for auto-redirect
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          navigate("/");
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [orderData, navigate]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center px-4 py-20" dir="rtl">
@@ -115,7 +90,7 @@ const ThankYou = () => {
           <div className="bg-green-50 rounded-2xl p-6 border border-green-200">
             <Truck className="w-8 h-8 text-green-600 mb-3" />
             <h3 className="font-bold text-green-900 mb-1">التوصيل</h3>
-            <p className="text-sm text-green-700">توصيل سريع إلى عنوانك</p>
+            <p className="text-sm text-green-700">توصيل خلال 24-48 ساعة كحد أقصى</p>
           </div>
 
           <div className="bg-purple-50 rounded-2xl p-6 border border-purple-200">
@@ -143,11 +118,6 @@ const ThankYou = () => {
           >
             العودة للرئيسية
           </Button>
-        </div>
-
-        {/* Auto Redirect Notice */}
-        <div className="text-center text-sm text-muted-foreground bg-muted/50 rounded-xl p-4">
-          <p>سيتم نقلك إلى الصفحة الرئيسية بعد <span className="font-bold text-primary">{countdown}</span> ثواني</p>
         </div>
       </div>
     </div>
