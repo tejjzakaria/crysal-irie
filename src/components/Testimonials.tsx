@@ -43,7 +43,7 @@ const Testimonials = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            آراء زبناءنا 💬
+            آراء زبناءنا
           </h2>
           <p className="text-xl text-muted-foreground">
             تجارب حقيقية من عملائنا المميزين

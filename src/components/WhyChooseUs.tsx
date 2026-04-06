@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              لماذا تختارين Crystal Oil؟ 💎
+              لماذا تختارين Crystal Oil؟
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               نحن لسنا مجرد متجر للمنتجات الطبيعية، بل شريكك في رحلة العناية بجمالك الطبيعي.

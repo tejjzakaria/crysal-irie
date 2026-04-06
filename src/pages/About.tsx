@@ -14,7 +14,7 @@ const About = () => {
         />
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            من نحن 💎
+            من نحن
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
             قصة Crystal Oil: رحلة نحو الجمال الطبيعي
@@ -27,7 +27,7 @@ const About = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="glass-card rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-              قصتنا 📖
+              قصتنا
             </h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -51,7 +51,7 @@ const About = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            قيمنا 🌟
+            قيمنا
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="glass-card rounded-2xl p-8 text-center">
@@ -101,7 +101,7 @@ const About = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            لماذا Crystal Oil؟ 💝
+            لماذا Crystal Oil؟
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="glass-card rounded-2xl p-6">
@@ -154,7 +154,7 @@ const About = () => {
         <div className="container mx-auto">
           <div className="glass-card rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-              أرقام تتحدث عن نفسها 📊
+              أرقام تتحدث عن نفسها
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">

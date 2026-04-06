@@ -44,7 +44,7 @@ const FAQ = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            الأسئلة الشائعة 💬
+            الأسئلة الشائعة
           </h2>
           <p className="text-xl text-muted-foreground">
             إجابات عن أكثر الأسئلة تداولًا بين عملائنا.

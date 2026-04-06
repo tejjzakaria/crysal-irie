@@ -386,7 +386,7 @@ const ProductDetail = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            فوائد المنتج 💎
+            فوائد المنتج
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform">
@@ -433,7 +433,7 @@ const ProductDetail = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            المكونات الطبيعية 🌿
+            المكونات الطبيعية
           </h2>
           <div className="glass-card rounded-2xl p-8 md:p-12">
             <p className="text-center text-lg text-muted-foreground mb-8">
@@ -485,7 +485,7 @@ const ProductDetail = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            طريقة الاستخدام 📝
+            طريقة الاستخدام
           </h2>
           <div className="glass-card rounded-2xl p-8 md:p-12">
             <div className="space-y-6">
@@ -542,7 +542,7 @@ const ProductDetail = () => {
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            آراء العملاء ⭐
+            آراء العملاء
           </h2>
 
           {/* Overall Rating */}
@@ -564,7 +564,7 @@ const ProductDetail = () => {
           {/* Customer Review Screenshots */}
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-center mb-6">
-              تقييمات عملائنا 📸
+              تقييمات عملائنا
             </h3>
             <p className="text-center text-muted-foreground mb-8">
               شاهدي ما يقوله عملاؤنا السعداء عن منتجاتنا
@@ -605,7 +605,7 @@ const ProductDetail = () => {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    منتج رائع! استخدمته لمدة أسبوعين والنتيجة مذهلة. بشرتي أصبحت أكثر نعومة وإشراقة. الرائحة جميلة جداً وتدوم طويلاً. أنصح به بشدة! 💕
+                    منتج رائع! استخدمته لمدة أسبوعين والنتيجة مذهلة. بشرتي أصبحت أكثر نعومة وإشراقة. الرائحة جميلة جداً وتدوم طويلاً. أنصح به بشدة!
                   </p>
                 </div>
               </div>
@@ -626,7 +626,7 @@ const ProductDetail = () => {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    كنت أبحث عن منتج طبيعي وآمن لبشرتي الحساسة، ولقيت ضالتي في هذا الزيت. ما سبب لي أي حساسية ونتيجته ممتازة. التوصيل كان سريع والتغليف محترم. شكراً Crystal Oil! 🌸
+                    كنت أبحث عن منتج طبيعي وآمن لبشرتي الحساسة، ولقيت ضالتي في هذا الزيت. ما سبب لي أي حساسية ونتيجته ممتازة. التوصيل كان سريع والتغليف محترم. شكراً Crystal Oil!
                   </p>
                 </div>
               </div>
@@ -647,7 +647,7 @@ const ProductDetail = () => {
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    أفضل استثمار في العناية بالبشرة! السعر معقول جداً مقارنة بالجودة العالية. جربت منتجات كثيرة ولكن هذا هو الأفضل بدون منازع. راح أطلب مرة ثانية أكيد! 👑
+                    أفضل استثمار في العناية بالبشرة! السعر معقول جداً مقارنة بالجودة العالية. جربت منتجات كثيرة ولكن هذا هو الأفضل بدون منازع. راح أطلب مرة ثانية أكيد!
                   </p>
                 </div>
               </div>
@@ -660,7 +660,7 @@ const ProductDetail = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            أسئلة شائعة عن المنتج 💬
+            أسئلة شائعة عن المنتج
           </h2>
           <div className="space-y-4">
             <div className="glass-card rounded-2xl p-6">

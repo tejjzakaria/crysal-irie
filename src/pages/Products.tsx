@@ -155,7 +155,7 @@ const Products = () => {
         <div className="container mx-auto text-center">
           <div className="glass-card rounded-3xl p-8 md:p-12 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              محتارة في الاختيار؟ 🤔
+              محتارة في الاختيار؟
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               تواصلي معنا وسنساعدك في اختيار المنتج المناسب لك

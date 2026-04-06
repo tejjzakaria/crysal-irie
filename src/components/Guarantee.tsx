@@ -34,7 +34,7 @@ const Guarantee = () => {
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            راحة بالك أولويتنا 🛡️
+            راحة بالك أولويتنا
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             نضمن لك تجربة تسوق آمنة ومريحة مع أفضل الخدمات
@@ -61,7 +61,7 @@ const Guarantee = () => {
         {/* Trust Badges */}
         <div className="glass-card rounded-2xl p-8 md:p-12 text-center">
           <h3 className="text-2xl font-bold mb-8">
-            موثوق بها من طرف آلاف العميلات 💝
+            موثوق بها من طرف آلاف العميلات
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center max-w-3xl mx-auto">
             <div className="text-center">

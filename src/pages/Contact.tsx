@@ -139,7 +139,7 @@ const Contact = () => {
         />
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            اتصلي بنا 📱
+            اتصلي بنا
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
             نحن هنا للإجابة على جميع استفساراتك
@@ -153,7 +153,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div>
               <div className="glass-card rounded-2xl p-8">
-                <h2 className="text-3xl font-bold mb-6">أرسلي لنا رسالة 💌</h2>
+                <h2 className="text-3xl font-bold mb-6">أرسلي لنا رسالة</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-lg">الاسم الكامل</Label>
@@ -253,7 +253,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <div className="glass-card rounded-2xl p-8">
-                <h2 className="text-3xl font-bold mb-6">معلومات التواصل 📞</h2>
+                <h2 className="text-3xl font-bold mb-6">معلومات التواصل</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -302,7 +302,7 @@ const Contact = () => {
               </div>
 
               <div className="glass-card rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4">أسئلة سريعة؟ 💬</h3>
+                <h3 className="text-2xl font-bold mb-4">أسئلة سريعة؟</h3>
                 <p className="text-muted-foreground mb-4">
                   تحققي من صفحة الأسئلة الشائعة للحصول على إجابات فورية
                 </p>

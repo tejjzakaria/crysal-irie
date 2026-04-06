@@ -33,7 +33,7 @@ const HowToUse = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            طريقة الاستخدام 📖
+            طريقة الاستخدام
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             اتبعي هذه الخطوات البسيطة للحصول على أفضل النتائج
@@ -75,7 +75,7 @@ const HowToUse = () => {
         {/* Additional Tips */}
         <div className="glass-card rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
           <h3 className="text-2xl font-bold mb-6 text-center">
-            نصائح إضافية للاستخدام الأمثل ⭐
+            نصائح إضافية للاستخدام الأمثل
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex gap-3">
