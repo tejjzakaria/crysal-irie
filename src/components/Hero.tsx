@@ -16,7 +16,7 @@ const DEFAULT_HERO_DATA: HeroData = {
   headline: "جاذبية طبيعية لا تُقاوم",
   subheadline: "زيوت طبيعية فاخرة مُعززة بالفيرمونات، مصممة لتترك انطباعاً لا يُنسى وإطلالة متألقة",
   ctaText: "تسوقي الآن",
-  backgroundImage: "/crystal images/GODDESS_ROSE_Mockup_Style1 copy 2.png",
+  backgroundImage: "/crystal images/GODDESS_ROSE_Mockup_Style1 copy 2.webp",
 };
 
 const Hero = () => {
