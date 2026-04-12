@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { categoriesApi } from "@/lib/api";
@@ -58,41 +59,47 @@ const Categories = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {categories.map((category, index) => (
-            <Card
+            <Link
               key={category._id}
-              className="hover-lift overflow-hidden border-0 shadow-lg"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              to={`/products?category=${encodeURIComponent(category.title)}`}
+              className="block"
+              aria-label={`عرض منتجات فئة ${category.title}`}
             >
-              <div className="relative h-64 overflow-hidden">
-                {category.image ? (
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-muted" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 right-4 left-4">
-                  <h3 className="text-2xl font-bold text-white mb-1">
-                    {category.title}
-                  </h3>
-                  {category.description && (
-                    <p className="text-sm text-white/90">
-                      {category.description}
-                    </p>
+              <Card
+                className="hover-lift overflow-hidden border-0 shadow-lg cursor-pointer"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative h-64 overflow-hidden">
+                  {category.image ? (
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted" />
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 right-4 left-4">
+                    <h3 className="text-2xl font-bold text-white mb-1">
+                      {category.title}
+                    </h3>
+                    {category.description && (
+                      <p className="text-sm text-white/90">
+                        {category.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-              {category.details && (
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {category.details}
-                  </p>
-                </CardContent>
-              )}
-            </Card>
+                {category.details && (
+                  <CardContent className="p-6">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {category.details}
+                    </p>
+                  </CardContent>
+                )}
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

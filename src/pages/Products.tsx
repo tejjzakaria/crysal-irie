@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +10,7 @@ interface Product {
   _id: string;
   name: string;
   slug: string;
+  category: string;
   shortDescription: string;
   price: number;
   originalPrice?: number;
@@ -22,6 +23,14 @@ interface Product {
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
+
+  const categoryFilter = searchParams.get("category")?.trim() || "";
+  const filteredProducts = categoryFilter
+    ? products.filter((product) =>
+        product.category?.trim().toLowerCase() === categoryFilter.toLowerCase()
+      )
+    : products;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -62,6 +71,13 @@ const Products = () => {
       {/* Products Grid */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
+          {categoryFilter && !loading && (
+            <div className="mb-8 text-right">
+              <p className="text-lg font-semibold text-primary">
+                عرض منتجات فئة "{categoryFilter}"
+              </p>
+            </div>
+          )}
           {loading ? (
             <div className="flex items-center justify-center min-h-[400px]">
               <div className="text-center">
@@ -69,17 +85,21 @@ const Products = () => {
                 <p className="text-muted-foreground">جاري تحميل المنتجات...</p>
               </div>
             </div>
-          ) : products.length === 0 ? (
+          ) : filteredProducts.length === 0 ? (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">📦</div>
-              <h3 className="text-2xl font-semibold mb-2">لا توجد منتجات</h3>
+              <h3 className="text-2xl font-semibold mb-2">
+                {categoryFilter ? "لا توجد منتجات في هذه الفئة" : "لا توجد منتجات"}
+              </h3>
               <p className="text-muted-foreground">
-                لم يتم إضافة منتجات بعد. تحقق لاحقاً!
+                {categoryFilter
+                  ? `لا توجد منتجات مطابقة لفئة "${categoryFilter}". حاول فئة أخرى أو عرض الكل.`
+                  : "لم يتم إضافة منتجات بعد. تحقق لاحقاً!"}
               </p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <Link
                   key={product._id}
                   to={`/product/${product.slug}`}
