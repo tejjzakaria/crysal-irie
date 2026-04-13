@@ -23,6 +23,7 @@ import AdminPixels from "./pages/admin/Pixels";
 import Login from "./pages/admin/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PixelScripts from "./components/PixelScripts";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const AppContent = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!isDashboard && !isAdminLogin && <Footer />}
+      <WhatsAppWidget />
     </>
   );
 };

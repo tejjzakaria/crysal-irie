@@ -193,7 +193,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border pt-8 text-center text-muted-foreground">
-          <p>© 2025 Crystal Oil. جميع الحقوق محفوظة.</p>
+          <p>© 2026 Crystal Oil. جميع الحقوق محفوظة.</p>
         </div>
       </div>
     </footer>
