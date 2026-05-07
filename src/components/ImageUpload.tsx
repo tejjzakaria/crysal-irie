@@ -50,10 +50,14 @@ const ImageUpload = ({
     setUploading(true);
 
     try {
+      const rawApiUrl = import.meta.env.VITE_API_URL;
+      const API_URL = import.meta.env.PROD
+        ? rawApiUrl && !rawApiUrl.includes('localhost') && !rawApiUrl.includes('127.0.0.1')
+          ? rawApiUrl
+          : '/api'
+        : rawApiUrl || '/api';
       const formData = new FormData();
       formData.append("image", file);
-
-      const API_URL = import.meta.env.VITE_API_URL || "/api";
       const response = await fetch(`${API_URL}/upload/image`, {
         method: "POST",
         body: formData,

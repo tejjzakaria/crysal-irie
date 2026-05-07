@@ -1,4 +1,9 @@
-const API_URL = import.meta.env.VITE_API_URL || '/api';
+const rawApiUrl = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.PROD
+  ? rawApiUrl && !rawApiUrl.includes('localhost') && !rawApiUrl.includes('127.0.0.1')
+    ? rawApiUrl
+    : '/api'
+  : rawApiUrl || '/api';
 
 // Hero API
 export const heroApi = {
