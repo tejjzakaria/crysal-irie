@@ -1,5 +1,15 @@
 // Derives the whole teal-based design system from a single hue, preserving
 // the saturation/lightness relationships defined in src/index.css.
+export const THEME_COLOR_STORAGE_KEY = "crystal_theme_color";
+
+export const cacheThemeColor = (hex: string) => {
+  try {
+    localStorage.setItem(THEME_COLOR_STORAGE_KEY, hex);
+  } catch {
+    // localStorage unavailable (private mode, etc.) — safe to ignore
+  }
+};
+
 const hexToHue = (hex: string): number | null => {
   const match = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
   if (!match) return null;

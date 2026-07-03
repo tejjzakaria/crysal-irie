@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { settingsApi } from "@/lib/api";
-import { applyThemeColor } from "@/lib/theme";
+import { applyThemeColor, cacheThemeColor } from "@/lib/theme";
 import { Loader2, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -46,6 +46,7 @@ const Appearance = () => {
     try {
       await settingsApi.update({ primaryColor });
       setSavedColor(primaryColor);
+      cacheThemeColor(primaryColor);
       toast({ title: "تم الحفظ", description: "تم تحديث لون الموقع بنجاح" });
     } catch {
       toast({ title: "خطأ", description: "فشل حفظ الإعدادات", variant: "destructive" });
