@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,6 +6,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { settingsApi } from "@/lib/api";
+
+const DEFAULT_CONTACT_PHONE = "0632454694";
+const DEFAULT_CONTACT_EMAIL = "info@crystaloil.ma";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, { message: "الاسم يجب أن يكون حرفين على الأقل" }).max(100, { message: "الاسم طويل جداً" }),
@@ -26,8 +30,17 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [contactPhone, setContactPhone] = useState(DEFAULT_CONTACT_PHONE);
+  const [contactEmail, setContactEmail] = useState(DEFAULT_CONTACT_EMAIL);
 
   const GOOGLE_SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL || "";
+
+  useEffect(() => {
+    settingsApi.get().then((data) => {
+      if (data.contactPhone) setContactPhone(data.contactPhone);
+      if (data.contactEmail) setContactEmail(data.contactEmail);
+    }).catch(() => {});
+  }, []);
 
   const sendToGoogleSheets = async (contactData: typeof formData) => {
     if (!GOOGLE_SHEETS_URL) {
@@ -261,7 +274,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg mb-1">الهاتف</h3>
-                      <p className="text-muted-foreground">0632454694</p>
+                      <p className="text-muted-foreground">{contactPhone}</p>
                     </div>
                   </div>
 
@@ -271,7 +284,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-bold text-lg mb-1">البريد الإلكتروني</h3>
-                      <p className="text-muted-foreground">info@crystaloil.ma</p>
+                      <p className="text-muted-foreground">{contactEmail}</p>
                     </div>
                   </div>
 

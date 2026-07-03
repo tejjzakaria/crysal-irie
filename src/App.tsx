@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
+import { settingsApi } from "@/lib/api";
+import { applyThemeColor } from "@/lib/theme";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -20,6 +23,8 @@ import AddProduct from "./pages/admin/AddProduct";
 import EditProduct from "./pages/admin/EditProduct";
 import AdminCategories from "./pages/admin/Categories";
 import AdminPixels from "./pages/admin/Pixels";
+import AdminContactInfo from "./pages/admin/ContactInfo";
+import AdminAppearance from "./pages/admin/Appearance";
 import Login from "./pages/admin/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PixelScripts from "./components/PixelScripts";
@@ -55,6 +60,8 @@ const AppContent = () => {
         <Route path="/dashboard/products/edit/:id" element={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
         <Route path="/dashboard/categories" element={<ProtectedRoute><AdminCategories /></ProtectedRoute>} />
         <Route path="/dashboard/pixels" element={<ProtectedRoute><AdminPixels /></ProtectedRoute>} />
+        <Route path="/dashboard/contact-info" element={<ProtectedRoute><AdminContactInfo /></ProtectedRoute>} />
+        <Route path="/dashboard/appearance" element={<ProtectedRoute><AdminAppearance /></ProtectedRoute>} />
 
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
@@ -65,19 +72,27 @@ const AppContent = () => {
   );
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <PixelScripts />
-        <AppContent />
-      </BrowserRouter>
-      <Analytics />
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useEffect(() => {
+    settingsApi.get().then((data) => {
+      if (data.primaryColor) applyThemeColor(data.primaryColor);
+    }).catch(() => {});
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <PixelScripts />
+          <AppContent />
+        </BrowserRouter>
+        <Analytics />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

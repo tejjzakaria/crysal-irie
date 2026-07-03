@@ -13,10 +13,14 @@ const contactSchema = z.object({
 });
 
 const DEFAULT_FOOTER_DESCRIPTION = "كريستال أويل هي علامة متخصصة في العناية الذاتية الطبيعية، تقدم صابونًا وزيوتًا فاخرة مصنوعة يدويًا من مكونات نباتية نقية. تم تصميم كل منتج ليغذي البشرة ويحوّل روتينك اليومي إلى لحظة من الهدوء والدلال. بلمسات أنيقة وروائح لطيفة وملمس غني، تجمع كريستال أويل بين الطبيعة والفخامة لتمنحك تجربة عناية حسية وأصيلة.";
+const DEFAULT_CONTACT_PHONE = "0632454694";
+const DEFAULT_CONTACT_EMAIL = "info@crystaloil.ma";
 
 const Footer = () => {
   const { toast } = useToast();
   const [footerDescription, setFooterDescription] = useState(DEFAULT_FOOTER_DESCRIPTION);
+  const [contactPhone, setContactPhone] = useState(DEFAULT_CONTACT_PHONE);
+  const [contactEmail, setContactEmail] = useState(DEFAULT_CONTACT_EMAIL);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -30,6 +34,8 @@ const Footer = () => {
   useEffect(() => {
     settingsApi.get().then((data) => {
       if (data.footerDescription) setFooterDescription(data.footerDescription);
+      if (data.contactPhone) setContactPhone(data.contactPhone);
+      if (data.contactEmail) setContactEmail(data.contactEmail);
     }).catch(() => {});
   }, []);
 
@@ -163,12 +169,12 @@ const Footer = () => {
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />
                 <span>
-                  0632454694
+                  {contactPhone}
                 </span>
               </div>
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>info@crystaloil.ma</span>
+                <span>{contactEmail}</span>
               </div>
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />

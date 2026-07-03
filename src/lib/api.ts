@@ -139,6 +139,11 @@ export const settingsApi = {
 
   update: async (data: {
     footerDescription?: string;
+    primaryColor?: string;
+    contactPhone?: string;
+    contactEmail?: string;
+    whatsappNumber?: string;
+    whatsappMessage?: string;
     facebookPixelId?: string;
     facebookPixelEnabled?: boolean;
     tiktokPixelId?: string;

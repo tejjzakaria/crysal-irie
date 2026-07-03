@@ -7,6 +7,8 @@ import {
   Package,
   LayoutGrid,
   ScanLine,
+  Phone,
+  Palette,
   LogOut,
   Home,
   Menu,
@@ -48,6 +50,16 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       name: "إعدادات البكسل",
       path: "/dashboard/pixels",
       icon: ScanLine,
+    },
+    {
+      name: "معلومات التواصل",
+      path: "/dashboard/contact-info",
+      icon: Phone,
+    },
+    {
+      name: "مظهر الموقع",
+      path: "/dashboard/appearance",
+      icon: Palette,
     },
   ];
 

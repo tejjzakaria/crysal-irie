@@ -1,8 +1,21 @@
-const WHATSAPP_NUMBER = "212632454694";
-const WHATSAPP_TEXT = encodeURIComponent("مرحبًا! أود الاستفسار عن منتجات كريستال أويل.");
+import { useState, useEffect } from "react";
+import { settingsApi } from "@/lib/api";
+
+const DEFAULT_WHATSAPP_NUMBER = "212632454694";
+const DEFAULT_WHATSAPP_TEXT = "مرحبًا! أود الاستفسار عن منتجات كريستال أويل.";
 
 const WhatsAppWidget = () => {
-    const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`;
+    const [whatsappNumber, setWhatsappNumber] = useState(DEFAULT_WHATSAPP_NUMBER);
+    const [whatsappMessage, setWhatsappMessage] = useState(DEFAULT_WHATSAPP_TEXT);
+
+    useEffect(() => {
+        settingsApi.get().then((data) => {
+            if (data.whatsappNumber) setWhatsappNumber(data.whatsappNumber);
+            if (data.whatsappMessage) setWhatsappMessage(data.whatsappMessage);
+        }).catch(() => {});
+    }, []);
+
+    const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
