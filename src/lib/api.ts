@@ -198,7 +198,7 @@ export const ordersApi = {
   },
 
   getStats: async () => {
-    const response = await fetch(`${API_URL}/orders/stats/summary`);
+    const response = await fetch(`${API_URL}/orders?stats=summary`);
     if (!response.ok) throw new Error('Failed to fetch stats');
     return response.json();
   },

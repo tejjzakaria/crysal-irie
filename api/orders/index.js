@@ -27,6 +27,15 @@ export default async function handler(req, res) {
   try {
     await connectToDatabase();
 
+    // GET stats summary (/api/orders?stats=summary)
+    if (req.method === 'GET' && req.query.stats === 'summary') {
+      const totalOrders = await Order.countDocuments();
+      return res.status(200).json({
+        totalOrders,
+        totalSales: 0, // Can be calculated if needed
+      });
+    }
+
     // GET all orders
     if (req.method === 'GET') {
       const orders = await Order.find().sort({ createdAt: -1 });
